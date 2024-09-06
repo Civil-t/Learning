@@ -151,7 +151,7 @@ console.log("TIPS", tips, "TOTALS", totals); */
 
 // bonus
 
-let sum = 0;
+/* let sum = 0;
 const arr = [26.4, 339.25, 202.4, 528, 44.4, 120.75, 12, 1320, 98.9, 59.8];
 const num = [20, 10];
 
@@ -164,4 +164,16 @@ const calcAverage = (d) => {
   return console.log(average);
 };
 
-calcAverage(num);
+calcAverage(num); */
+
+//DEVELOPER SKILLS CHALLENGE 1
+
+const data = [17, 21, 23];
+
+const printForecast = (arr) => {
+  for (let i = 0; i < data.length; i++) {
+    console.log(`... ${data[i]} in ${i + 1} days`);
+  }
+};
+
+printForecast(data);
