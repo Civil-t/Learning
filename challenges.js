@@ -168,7 +168,7 @@ calcAverage(num); */
 
 //DEVELOPER SKILLS CHALLENGE 1
 
-const data = [17, 21, 23];
+/* const data = [17, 21, 23];
 
 const printForecast = (arr) => {
   for (let i = 0; i < data.length; i++) {
@@ -176,4 +176,116 @@ const printForecast = (arr) => {
   }
 };
 
-printForecast(data);
+printForecast(data); */
+
+////////////////////////////////////////////////////////////////////
+
+//Data Structures, Modern Operators and Strings Coding Challenge #1
+
+const game = {
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
+    ],
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+// Tasks Destructuring Arrays and Objects
+
+/* // 1. destructuring array
+const [players1, players2] = game.players;
+
+// 2 rest pattern
+const [gk, ...fieldPlayers] = players1;
+
+// 3
+const allPlayers = [...players1, ...players2];
+
+// 4
+const players1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
+
+// 5
+const { team1, x: draw, team2 } = { ...game.odds };
+
+// 6
+const printGoals = function (...any) {
+  //console.log(`${any} The number of goals scored is ${any.length}`);
+};
+
+printGoals(...game.scored); */
+
+// 7 logical operator in place of (if or ternary)
+//team1 < team2 && console.log("Team 1 is more likely to win");
+
+// Challenge 2
+
+// 1
+/* for (const [index, name] of game.scored.entries())
+  console.log(`Goal ${index} : ${name}`); */
+
+// 2
+let odds = Object.values(game.odds);
+console.log("ODSS :", odds);
+let total = 0;
+
+for (const odd of odds) {
+  total += odd;
+}
+
+console.log(total / odds.length);
+
+// 3
+console.log(
+  `Odd for victory ${game.team1} : ${game.odds.team1} \n Odd for draw : ${game.odds.x} \n Odd for victory ${game.team2} :  ${game.odds.team2}`
+);
+
+// Challenge 3
+
+const gameEvents = new Map([
+  [17, "⚽ GOAL"],
+  [36, "🔁 Substitution"],
+  [47, "⚽ GOAL"],
+  [61, "🔁 Substitution"],
+  [64, "🔶 Yellow card"],
+  [69, "🔴 Red card"],
+  [70, "🔁 Substitution"],
+  [72, "🔁 Substitution"],
+  [76, "⚽ GOAL"],
+  [80, "⚽ GOAL"],
+  [92, "🔶 Yellow card"],
+]);
+
+const events = [gameEvents];
