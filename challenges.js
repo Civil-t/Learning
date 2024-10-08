@@ -182,7 +182,7 @@ printForecast(data); */
 
 //Data Structures, Modern Operators and Strings Coding Challenge #1
 
-const game = {
+/* const game = {
   team1: "Bayern Munich",
   team2: "Borrussia Dortmund",
   players: [
@@ -221,7 +221,7 @@ const game = {
     x: 3.25,
     team2: 6.5,
   },
-};
+}; */
 
 // Tasks Destructuring Arrays and Objects
 
@@ -254,7 +254,7 @@ printGoals(...game.scored); */
 
 // 1
 /* for (const [index, name] of game.scored.entries())
-  console.log(`Goal ${index} : ${name}`); */
+  console.log(`Goal ${index} : ${name}`); 
 
 // 2
 let odds = Object.values(game.odds);
@@ -271,8 +271,8 @@ console.log(total / odds.length);
 console.log(
   `Odd for victory ${game.team1} : ${game.odds.team1} \n Odd for draw : ${game.odds.x} \n Odd for victory ${game.team2} :  ${game.odds.team2}`
 );
-
-// Challenge 3
+*/
+/* // Challenge 3
 
 const gameEvents = new Map([
   [17, "⚽ GOAL"],
@@ -288,4 +288,37 @@ const gameEvents = new Map([
   [92, "🔶 Yellow card"],
 ]);
 
-const events = [gameEvents];
+// 1.
+const events = [...gameEvents];
+//console.log(events);
+
+// 2
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// 4
+for ([key, value] of gameEvents) {
+  if (key < 45) console.log(`[FIRST HALF] ${key} : ${value}`);
+  else {
+    console.log(`[SECOND HALF] ${key} : ${value}`);
+  }
+}
+ */
+
+// challenge 4
+
+const testData =
+  "underscore_case first_name Some_Variable calculate_AGE delayed_departure";
+
+function sortStrings(sentence) {
+  const noSpaces = sentence.split(" ");
+
+  for (sent of noSpaces) {
+    const char = { ...sent };
+    for (const i = 0; i < char.length; i++) {
+      console.log(char.i);
+    }
+  }
+}
+
+sortStrings(testData);
