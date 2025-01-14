@@ -305,6 +305,7 @@ for ([key, value] of gameEvents) {
 }
  */
 
+/*
 // challenge 4
 
 const testData =
@@ -322,3 +323,5 @@ function sortStrings(sentence) {
 }
 
 sortStrings(testData);
+
+*/
