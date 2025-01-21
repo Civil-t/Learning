@@ -507,15 +507,177 @@ dombo.introduce();
 
 */
 
-// PUBLIC INTERFACES AND ENCAPSULATION
+// PUBLIC INTERFACES AND ENCAPSULATION -> PI exposes  code to external (outside class ) access and manipulation; encapsulation -> makes it only accessible internally through protected and private
+/*
+// Class Fields
+
+1. Public field
+2. Private field
+3. Public methods
+4. Private methods
 
 class Account {
+  // 1. PUBLIC FIELDS -> fields are property in every instance
+  //  N.B these will be instance properties and are not on the prototype
+  locale = navigator.language;
+  // _movements = [];
+  
+  // 2. PRIVATE FIELDS
+  #movements = [];
+  #pin;
+  
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
-    this.movements = [];
+    // protected properties - agreed convention (_something)
+    this.#pin = pin;
+    // this._movements = [];
   }
 
-  // method
+  // function to give access t movements but not override
+  getMovements() {
+    return this.#movements;
+  }
+  
+  //  3. PUBLIC METHODS
+  
+  // PUBLIC INTERFACE
+  
+  // method to deposit
+  deposit(val) {
+    this.#movements.push(val);
+    return this; // helps in chaining methods bcz it now returns the object name instead of undefined
+  }
+  
+  // method to withdraw
+  withdraw(val) {
+    this.deposit(-val);
+    return this;
+  }
+  // method to approve loan
+  _approveLoan(amnt) {
+    return true;
+  }
+  
+  // method to request loan
+  requestLoan(amnt) {
+    // if (this.#approveLoan(amnt)) {
+      if (this._approveLoan(amnt)) {
+        this.deposit(amnt);
+        console.log(`Loan approved!!`);
+      }
+    return this;
+  }
+  
+  // 4. PRIVATE METHODS
+  
+  #approveLoan(amnt) {
+    return true;
+  }
 }
+
+// Account instances
+const acc1 = new Account('Tapiwa', 'USD', 8888);
+acc1.deposit(1000000);
+acc1.withdraw(50000);
+console.log(acc1);
+
+//  Chaining Methods
+acc1
+.deposit(10000)
+.deposit(50000)
+.withdraw(100000)
+.requestLoan(9000000)
+.withdraw(700000);
+
+console.log(acc1.getMovements());
+
+*/
+
+// CHALLENGE 4 -> implemting challlenge 3 in es6 classes
+
+/*
+Your tasks: 
+1. Re-create Challenge #3, but this time using ES6 classes: create an 'EVCl' 
+child class of the 'CarCl' class 
+
+2. Make the 'charge' property private 
+
+3. Implement the ability to chain the 'accelerate' and 'chargeBattery' 
+methods of this class, and also update the 'brake' method in the 'CarCl' 
+class. Then experiment with chaining! 
+Test data: 
+§ Data car 1: 'Rivian' going at 120 km/h, with a charge of 23%
+*/
+
+// Parent (class)
+
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  // CarCl method to reduce speed
+  brake() {
+    return console.log(
+      `${this.make} is has reduced speed to ${(this.speed -= 5)}`
+    );
+  }
+}
+
+// Child (class)
+
+class EVCl extends CarCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  // method to get charge
+  getCharge() {
+    return this.#charge;
+  }
+
+  // EVCl Charge Battery method
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    // set chargeTo (){}
+    return this;
+  }
+
+  // EVCl method to increase speed
+  accelerate() {
+    console.log(
+      `${
+        this.make
+      } going at ${(this.speed += 20)} km/h with a charge of ${(this.#charge -=
+        this.#charge * 0.01)}%`
+    );
+    return this;
+  }
+}
+
+//  EVCl instance
+const car1 = new EVCl('Tesla', 120, 90);
+/*
+
+car1.accelerate();
+car1.accelerate();
+car1.accelerate();
+car1.accelerate();
+car1.accelerate();
+
+// Testing inheritance (access of EVCl (child class) instances to CarCl (parent class) methods)
+car1.brake();
+car1.brake();
+car1.brake();
+car1.brake();
+
+car1.chargeBattery(95);
+car1.accelerate();
+
+*/
+car1.accelerate().accelerate().chargeBattery(90).chargeBattery(200);
+console.log(car1);
