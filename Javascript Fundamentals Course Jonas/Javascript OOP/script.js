@@ -29,7 +29,7 @@ console.log(myself);
 
 - every function has a prototype property which is inherited by the instances of that function 
 - prototype is an object with own properties/data and logic/functions but are not direct properties of the 
-    instances butthe instances have access to use this improves on the efficiency of the program
+    instances but the instances have access to use this improves on the efficiency of the program
 - 
 
 // add a function to the prototype
